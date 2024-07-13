@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+body {
+  background-color: #e3e3ed;
+  min-height: 100vh;
+}
+.wrapper {
+  padding: 100px 0;
+}
+.box {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+}
+.box ul li {
+  list-style: none;
+}
+.box a {
+  text-decoration: none;
+}
+.top__header {
+  background-color: transparent;
+  border-bottom: 1px solid royalblue;
+  padding-bottom: 5px;
+}
+.top__header a {
+  color: royalblue;
+  position: relative;
+}
+.top__header a {
+  position: relative;
+  display: inline-block;
+}
+.top__header a::after {
+  position: absolute;
+  content: '\00BB';
+  right: -20px;
+  top: -1px;
+  transform: rotate(90deg);
+  transition: transform 0.3s linear;
+  font-size: 21px;
+}
+.top__header.active a::after {
+  transform: rotate(270deg);
+}
+.dropdown {
+  background-color: transparent;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown li {
+  padding-top: 25px;
+  border-bottom: 1px solid #777;
+  padding-bottom: 4px;
+}
+.dropdown li a {
+  color: #091b29;
+}
+.dropdown li[data-filter='All Core Strategy'] {
+  order: -1;
+}
+.dropdown li[data-filter='other'] {
+  order: 1;
+}
+
+.dropdown li[data-filter='other'] a {
+  color: #777;
+}

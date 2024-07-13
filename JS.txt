@@ -1,0 +1,48 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const topHeader = document.querySelector('.top__header')
+  const dropdown = document.querySelector('.dropdown')
+  const allLink = document.querySelector('.top__header a')
+
+  dropdown.addEventListener('click', function (event) {
+    if (event.target.tagName === 'A') {
+      const clickedLink = event.target
+      const currentTopLink = topHeader.firstElementChild
+
+      if (clickedLink === allLink) {
+        // If clicked link is "ALL" and it's in dropdown, move it to top header
+
+        if (dropdown.contains(allLink)) {
+          topHeader.innerHTML = ''
+          topHeader.appendChild(allLink)
+          dropdown.appendChild(currentTopLink)
+          dropdown.style.maxHeight = '0px'
+          return
+        }
+      } else {
+        // Move the current top header link to the dropdown if it's not "ALL"
+        if (currentTopLink && currentTopLink !== allLink) {
+          dropdown.appendChild(currentTopLink)
+        }
+
+        // Replace the top header link with the clicked link
+        topHeader.innerHTML = '' // Clear the top header
+        topHeader.appendChild(clickedLink)
+      }
+
+      // Ensure "ALL" is the first child of the dropdown
+      if (!dropdown.contains(allLink)) {
+        dropdown.insertBefore(allLink, dropdown.firstChild)
+      }
+    }
+    dropdown.style.maxHeight = '0px'
+  })
+
+  topHeader.addEventListener('click', function () {
+    let isClosed = window.getComputedStyle(dropdown).maxHeight === '0px'
+    if (isClosed) {
+      dropdown.style.maxHeight = dropdown.scrollHeight + 'px'
+    } else {
+      dropdown.style.maxHeight = '0px'
+    }
+  })
+})
