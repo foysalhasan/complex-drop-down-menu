@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // mobile filter selector
   const dropdown = document.querySelector('.dropdown')
   const topHeader = document.querySelector('.top__header')
+  // select the active filter from mobile dropdown filter
   const topHeaderLink = document.querySelector('.top__header li')
 
   // Changing mobile menu filter according to the desktop activefilter
